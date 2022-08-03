@@ -1,5 +1,4 @@
 export class DoctorRegisterDto {
-  readonly id: string;
   readonly email: string;
   readonly reg_token: string;
   readonly photo_avatar: string;
