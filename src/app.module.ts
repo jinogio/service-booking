@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-// import { ConfigModule } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { DoctorsModule } from './doctor/doctor.module';
 import { AppointmentsModule } from './appointment/appointment.module';
@@ -10,8 +10,8 @@ import { AppointmentsModule } from './appointment/appointment.module';
     UsersModule,
     DoctorsModule,
     AppointmentsModule,
-
     MongooseModule.forRoot(process.env.MONGO_URL),
+    ConfigModule.forRoot(),
   ],
   controllers: [],
   providers: [],

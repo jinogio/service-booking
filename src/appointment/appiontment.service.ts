@@ -3,6 +3,7 @@ import { User } from '../DB/user-interface';
 import { Appointment } from '../DB/appointment-interface';
 import { DoctorRegisterDto } from '../doctor/doctor-dto/doctor-register-dto';
 import { UserRegisterDto } from 'src/users/user-dto/user-register-dto';
+import { GetAppointmentIdDto } from './appointment-dto/appointment-id-dto';
 import { InjectModel } from '@nestjs/mongoose';
 import {
   ConflictException,
@@ -89,5 +90,18 @@ export class AppointmentsService {
     }
 
     await this.appointmentModel.deleteOne({ id: appointmentDto.appointment });
+  }
+
+  async getAppointment(
+    appointmentId: GetAppointmentIdDto,
+  ): Promise<Appointment> {
+    const existingAppointment = await this.appointmentModel.findOne(
+      appointmentId,
+    );
+    if (!existingAppointment) {
+      throw new Error('user not found');
+    }
+
+    return existingAppointment;
   }
 }

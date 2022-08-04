@@ -7,4 +7,5 @@ export class DoctorRegisterDto {
   readonly type: string;
   readonly spec: string;
   readonly free: string;
+  readonly password: string;
 }
